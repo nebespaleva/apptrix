@@ -1,0 +1,24 @@
+.layout {
+    height: 100vh;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ant-layout-content {
+    margin-top: 150px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__error {
+        margin-top: 25px;
+        color: tomato;
+        text-align: center;
+    }
+}
