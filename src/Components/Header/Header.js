@@ -22,8 +22,13 @@ const HeaderComponent = ({authorized, selected}) => {
         <Header className='header-wrapper'>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[`${selected}`]}>
                     <Menu.Item key='1'>
-                        <Link to='/home'>
-                            Home
+                        <Link to='/users'>
+                            Users
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key='3'>
+                        <Link to='/tasks'>
+                            Tasks
                         </Link>
                     </Menu.Item>
                     <Menu.Item 

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { Layout, Card } from "antd";
 import HeaderComponent from "../../Components/Header/Header";
@@ -7,13 +8,20 @@ import './index.scss';
 const { Content, Footer } = Layout;
 
 const PersonalCard = () => {
+    const navigate = useNavigate();
+
     const currentCardID = useSelector((store) => store.cardStore.currentCardID);
-    const authorized = useSelector((store) => store.signInStore.authorized);
+    const authorized = useSelector((store) => store.signInStore.isAuthorized);
     const cards = useSelector((store) => store.cardStore.cards);
 
-    let cardInfo = cards.filter((item) => item.id === currentCardID);
+    useEffect(() => {
+        if (!authorized) {
+            navigate('/login')
+            localStorage.clear();
+        }
+    }, [authorized]);
 
-    console.log(cardInfo);
+    let cardInfo = cards.filter((item) => item.id === currentCardID);
 
     const renderCard = (cardInfo) => {
         return(
