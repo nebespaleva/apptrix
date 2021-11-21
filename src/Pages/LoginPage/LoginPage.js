@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
-import { Layout, Menu, Input, Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { Layout, Input, Button } from 'antd';
 import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { setLoading } from '../../Reducers/signInReducer';
-import { postLogInData } from '../../AsyncActions';
+import { postLogInData } from '../../AsyncActions/asyncLogin';
+import HeaderComponent from '../../Components/Header/Header';
 import './index.scss';
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 const LoginPage = () => {
     const dispatch = useDispatch();
@@ -36,21 +37,10 @@ const LoginPage = () => {
 
     return(
         <Layout className="layout">
-        <Header className='header-wrapper'>
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                    <Menu.Item key='1'>
-                        <Link to='/home'>
-                            Home
-                        </Link>
-                    </Menu.Item>
-                    <Menu.Item key='2'>
-                    <Link to='/login'>
-                            Sign In
-                        </Link>
-                    </Menu.Item>
-                
-            </Menu>
-        </Header>
+        <HeaderComponent 
+            authorized={authorized}
+            selected={2}
+        />
         <Content>
             <form className="content-wrapper">
                 <Input 
