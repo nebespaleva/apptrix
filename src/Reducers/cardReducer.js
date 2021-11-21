@@ -1,11 +1,13 @@
 const SET_DATA_TO_CARDS = 'SET_DATA_TO_CARDS';
 const SET_CARDS_LOADING = 'SET_LOADING';
 const SET_CURRENT_CARD_ID = 'SET_CURRENT_CARD_ID';
+const SET_DATA_TO_TASKS = 'SET_DATA_TO_TASKS';
 
 const initialState = {
     cards: [],
     loading: false,
     currentCardID: '',
+    tasks: [],
 }
 
 export default function cardReducer(state = initialState, action) {
@@ -14,6 +16,13 @@ export default function cardReducer(state = initialState, action) {
             return {
                 ...state,
                 cards: [
+                    ...action.payload
+                ]
+            }
+        case SET_DATA_TO_TASKS:
+            return {
+                ...state,
+                tasks: [
                     ...action.payload
                 ]
             }
@@ -35,3 +44,4 @@ export default function cardReducer(state = initialState, action) {
 export const setDataToCards = (payload) => ({type: SET_DATA_TO_CARDS, payload});
 export const setCardsLoading = (payload) => ({type: SET_CARDS_LOADING, payload});
 export const setCurrentCardID = (payload) => ({type: SET_CURRENT_CARD_ID, payload});
+export const setDataToTasks = (payload) => ({type: SET_DATA_TO_TASKS, payload});

@@ -23,7 +23,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (authorized) {
-            navigate('/home');
+            navigate('/users');
         } else {
             localStorage.clear();
         }
